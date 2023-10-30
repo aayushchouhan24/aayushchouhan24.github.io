@@ -84,7 +84,7 @@ audio::-webkit-media-controls-panel {
 }
 
 .alert>.text p {
-   margin: 5px 0;
+    margin: 5px 0;
     font-size: 14px;
 }
 
@@ -159,7 +159,8 @@ audio::-webkit-media-controls-panel {
 }
 
 .stego {
-    transform: translate(-50%, -50%);
+    top: 40%;
+    transform: translate(0%, -50%);
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -182,13 +183,11 @@ audio::-webkit-media-controls-panel {
 }
 
 .imagesteg {
-    top: 40%;
     left: 50%;
 }
 
 .audiosteg {
-    top: 40%;
-    left: 20%;
+    right: 50%;
 }
 
 
