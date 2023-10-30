@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stenography Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+</head>
+
+<body>
+    <div class="stego imagesteg">
+        <h2>Image LSB Stenography</h2>
+        <div class="card">
+            <div class="head">
+                <img src="https://picsum.photos/1000/700">
+                <p></p>
+            </div>
+            <div class="file image" onclick="document.querySelector('.image input').click()">
+                <input type="file" accept="image/*">
+                <svg class="cls-1" viewBox="0 0 32 32">
+                    <rect stroke-width="4" rx="100%" ry="100%" width="26" height="26" x="50%" y="50%"
+                        transform="translate(-13,-13)" fill="none" />
+                    <path
+                        d="M19.59,15.55l-.58.58L18,18V10a2,2,0,0,0-4,0v8l-1-1.78-.65-.65a2,2,0,0,0-2.83,2.83l5,5a2,2,0,0,0,2.83,0l5-5a2,2,0,0,0-2.83-2.83Z" />
+                </svg>
+                <img src="">
+            </div>
+            <div class="title">Secret message</div>
+            <input class="text-input" type="text" placeholder='Enter your secret message'>
+            <div class="card__wrapper">
+                <button class="card__btn encrypt-image">Encrypt</button>
+                <button class="card__btn decrypt-image">Decrypt</button>
+            </div>
+        </div>
+    </div>
+    <div class="stego audiosteg">
+        <h2>Audio LSB Stenography</h2>
+        <div class="card">
+            <div class="head">
+                <img
+                    src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=2670&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                <p></p>
+            </div>
+            <div class="file audio" onclick="document.querySelector('.audio input').click()">
+                <input type="file" accept="audio/*">
+                <svg class="cls-1" viewBox="0 0 32 32">
+                    <path
+                        d="M19.59,15.55l-.58.58L18,18V10a2,2,0,0,0-4,0v8l-1-1.78-.65-.65a2,2,0,0,0-2.83,2.83l5,5a2,2,0,0,0,2.83,0l5-5a2,2,0,0,0-2.83-2.83Z" />
+                </svg>
+            </div>
+            <div class="title">Secret message</div>
+            <input class="text-input" type="text" placeholder='Enter your secret message'>
+            <div class="card__wrapper">
+                <button class="card__btn encrypt-audio">Encrypt</button>
+                <button class="card__btn decrypt-audio">Decrypt</button>
+            </div>
+        </div>
+        <div class="sqr">
+            <audio controls> </audio>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/stegojs/dist/Stego.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
