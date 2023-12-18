@@ -177,7 +177,7 @@ async function loadMod(i, url) {
 // console.log(event.acceleration, event.rotationRate);
 // })
 window.addEventListener("deviceorientation", function(event){
-console.log(event.alpha,event.beta,event.gamma);
+  gyroValue = event.beta
 })
 
 const loop = () => {
