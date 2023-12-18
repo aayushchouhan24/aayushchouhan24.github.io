@@ -177,14 +177,13 @@ async function loadMod(i, url) {
 // console.log(event.acceleration, event.rotationRate);
 // })
 window.addEventListener("deviceorientation", function(event){
-  gyroValue = event.beta
+  camera.rotation.z = event.alpha/100
 })
 
 const loop = () => {
   Group.rotation.x = THREE.MathUtils.lerp(Group.rotation.x, mouse.y / 20, .02)
   Group.rotation.y = THREE.MathUtils.lerp(Group.rotation.y, mouse.x / 2, .02)
   Group.position.z = THREE.MathUtils.lerp(Group.rotation.x, (mouse.x - .5) * 10, .02)
-  camera.rotation.z = THREE.MathUtils.lerp(camera.rotation.z, gyroValue, .02)
 
 
   renderer.render(scene, camera)
