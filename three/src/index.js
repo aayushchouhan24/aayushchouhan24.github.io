@@ -128,6 +128,7 @@ scene.add(Group)
 
 addEventListener('mousemove', (e) => {
   mouse.set(e.clientX / innerWidth, e.clientY / innerHeight)
+  console.log('ju');
 })
 
 const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
@@ -176,7 +177,6 @@ async function loadMod(i, url) {
 window.addEventListener("devicemotion", function(event){
 console.log(event);
 });
-
 
 const loop = () => {
   Group.rotation.x = THREE.MathUtils.lerp(Group.rotation.x, mouse.y / 20, .02)
