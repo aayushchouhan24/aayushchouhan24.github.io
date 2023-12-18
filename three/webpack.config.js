@@ -1,8 +1,9 @@
 
-const path = require('path')
+  const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const plugins = [
   new HtmlWebpackPlugin({
@@ -12,6 +13,18 @@ const plugins = [
     filename: './styles.css',
   }),
 ]
+
+const fs = require('fs')
+const publicDirectory = path.resolve(__dirname, 'public')
+if (fs.existsSync(publicDirectory) && fs.readdirSync(publicDirectory).length > 0) {
+  plugins.push(
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public', to: '' },
+      ],
+    })
+  )
+}
 
 module.exports = {
   entry: './src/index.js',
@@ -39,6 +52,13 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
+        test: /.(jpg|png|gif|svg)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/images/[hash][ext]',
+        },
+      },
+      {
         test: /.(glsl|frag|vert)$/,
         use: ['raw-loader', 'glslify-loader'],
       },
@@ -47,10 +67,16 @@ module.exports = {
   plugins: plugins,
   devServer: {
     host: 'local-ip',
-    port: 3000,
+    port: 3000, 
     open: true,
     https: false,
     allowedHosts: 'all',
     hot: false,
+    watchFiles: ['src/**', 'public/**'], 
+    static: {
+      watch: true,
+      directory: path.join(__dirname, 'public'), 
+    },
   },
 };
+  

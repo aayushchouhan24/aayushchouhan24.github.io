@@ -33,7 +33,7 @@ draco.setDecoderConfig({ type: 'js' })
 draco.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/')
 loader.setDRACOLoader(draco)
 
-const urls = ['/elephant.glb', '/giraf.glb', '/gorilla.glb'], colors = [0xac519c, 0x86573c, 0x474981]
+const urls = ['/three/elephant.glb', '/three/giraf.glb', '/three/gorilla.glb'], colors = [0xac519c, 0x86573c, 0x474981]
 let groupPose = true, models = [], modelPose = urls.map(() => true)
 
 const Group = new THREE.Group()
@@ -172,6 +172,11 @@ async function loadMod(i, url) {
     obj.scene.visible = i === 0
   })
 }
+
+window.addEventListener("devicemotion", function(event){
+console.log(event);
+});
+
 
 const loop = () => {
   Group.rotation.x = THREE.MathUtils.lerp(Group.rotation.x, mouse.y / 20, .02)
