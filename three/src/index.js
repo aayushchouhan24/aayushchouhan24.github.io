@@ -177,7 +177,7 @@ window.addEventListener("devicemotion", function(event){
 console.log(event.acceleration, event.rotationRate);
 })
 window.addEventListener("deviceorientation", function(event){
-console.log(event);
+console.log(event.alpha,event.beta,event.gamma);
 })
 
 const loop = () => {
