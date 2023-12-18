@@ -45,7 +45,7 @@ const mat0 = new THREE.MeshMatcapMaterial({
 })
 const mat1 = new THREE.MeshMatcapMaterial({ color: colors[1], })
 const mat2 = new THREE.MeshMatcapMaterial({ color: colors[0], matcap, })
-const mat3 = new THREE.MeshMatcapMaterial({  color: colors[1], matcap,})
+const mat3 = new THREE.MeshMatcapMaterial({ color: colors[1], matcap, })
 
 const floorA = new THREE.Mesh(geometry, mat0)
 const floorB = new THREE.Mesh(geometry, mat1)
@@ -176,14 +176,15 @@ async function loadMod(i, url) {
 // window.addEventListener("devicemotion", function(event){
 // console.log(event.acceleration, event.rotationRate);
 // })
-window.addEventListener("deviceorientation", function(event){
-  camera.rotation.z = event.alpha/100
+window.addEventListener("deviceorientation", function (event) {
+  gyroValue = Math.min(event.alpha, Math.PI / 20)
 })
 
 const loop = () => {
   Group.rotation.x = THREE.MathUtils.lerp(Group.rotation.x, mouse.y / 20, .02)
   Group.rotation.y = THREE.MathUtils.lerp(Group.rotation.y, mouse.x / 2, .02)
   Group.position.z = THREE.MathUtils.lerp(Group.rotation.x, (mouse.x - .5) * 10, .02)
+  camera.rotation.z = THREE.MathUtils.lerp(camera.rotation.z, gyroValue, .02)
 
 
   renderer.render(scene, camera)
