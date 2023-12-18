@@ -176,6 +176,9 @@ async function loadMod(i, url) {
 window.addEventListener("devicemotion", function(event){
 console.log(event.acceleration, event.rotationRate);
 })
+window.addEventListener("deviceorientation", function(event){
+console.log(event);
+})
 
 const loop = () => {
   Group.rotation.x = THREE.MathUtils.lerp(Group.rotation.x, mouse.y / 20, .02)
