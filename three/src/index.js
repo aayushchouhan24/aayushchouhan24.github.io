@@ -178,6 +178,7 @@ async function loadMod(i, url) {
 // })
 window.addEventListener("deviceorientation", function (event) {
   gyroValue = Math.min(event.alpha, Math.PI / 20)
+  console.log(gyroValue,event.alpha);
 })
 
 const loop = () => {
